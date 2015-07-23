@@ -41,13 +41,12 @@
   font-family: 'Roboto', sans-serif;
   font-weight: 900;
   color: white;
-  text-transform: uppercase;
   margin: 0;
   padding: 0;
   position: absolute;
   top: 50%;
   left: 50%;
-  font-size: 2rem;
+  font-size: 32px;
   transform: translate(-50%, -50%);
   white-space:nowrap;
 }
@@ -64,9 +63,6 @@
 @media (min-width:992px){
 	.product-info {
 		height:300px;
-	}
-	.product-info h2{
-		font-size: 24px;
 	}
 }
 
