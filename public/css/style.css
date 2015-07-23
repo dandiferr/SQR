@@ -1,17 +1,19 @@
 @import url(http://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700);
 
 .headerimage {
-	background-color:#003a6f;
-	height:600px;
+	background-color: white;
+	background: url(/assets/img/Optimized-SF_background.jpg) no-repeat center fixed;
+	min-height:400px;
+	height: calc(60vh);
 	width:100%;
-	background-size:cover;
+	background-size: cover;
 	position:relative;
 	z-index:-1;
 }
 #backshape .wrapper {
   display: block;
   float:left;
-  margin:50px auto 200px;
+  margin:50px auto 100px;
   width:100%;
   padding:0 5%;
   transform:skew(0deg,-5deg);
@@ -19,15 +21,48 @@
 -webkit-transform:skew(0deg,-5deg); 
 }
 .product {
-  float:left;
-  width:29%;
-  min-height:200px;
-  background:blue;
-  margin:2%;
   transform:skew(0deg,-5deg);
 -ms-transform:skew(0deg,-10deg); /* IE 9 */
 -webkit-transform:skew(0deg,0deg); /* Safari and Chrome */
 }
+
+.product-info {
+	min-height: 200px;
+	margin: 15px auto;
+	padding: 15px;
+  	background: grey;
+}
+
+#sanfrancisco {
+	background: url(/assets/img/sanfrancisco.jpg) no-repeat;
+	background-size: cover;
+}
+
+#newyork {
+	background: url(/assets/img/newyork.jpg) no-repeat;
+	background-size: cover;
+}
+
+#seattle {
+	background: url(/assets/img/seattle.jpg) no-repeat;
+	background-size: cover;
+}
+
+#losangeles {
+	background: url(/assets/img/losangeles.jpg) no-repeat;
+	background-size: cover;
+}
+
+#austin {
+	background: url(/assets/img/austin.jpg) no-repeat;
+	background-size: cover;
+}
+
+#boston {
+	background: url(/assets/img/boston.jpg) no-repeat;
+	background-size: cover;
+}
+
 #backshape {
 	position: relative;
   z-index:2;
@@ -63,8 +98,7 @@
 
 #home > .container {
 	position: fixed;
-  	top: 50%;
-  	transform: translateY(calc(-50% - 40px));
+  	top: calc(20vh);
   	width: 100%;
   	text-align: center;
 }
@@ -86,7 +120,7 @@
 	border: 1px solid #FFB300;
 	background-color: #FFB300;
 	color: white;
-	border-radius: 25px;
+	border-radius: 0px;
 	outline: none;
 }
 
@@ -96,15 +130,23 @@
 	outline: none;
 }
 
-.btn-whb {
-	border: 1px solid #006E96;
+.btn-wh-invert {
+	border: 1px solid #FFB300;
 	background-color: transparent;
-	color: white;
+	color: #FFB300;
+	border-radius: 0px;
+	outline: none;	
 }
 
-.btn-whb:hover, .btn-whb:active, .btn-whb:focus {
-	background-color: #006E96;
-	color: white;
+.btn-wh-invert:hover, .btn-wh-invert:active, .btn-wh-invert:focus, .btn-wh-invert:active:focus {
+	color: #FFB300;
+	outline: none;
+}
+
+.btn-xl {
+	padding: 15px 32px;
+  	font-size: 18px;
+  	line-height: 1.3333333;
 }
 
 .partial-view {
@@ -115,17 +157,8 @@
 	min-height: calc(100vh - 80px);
 }
 
-.homeview {
-	background-color: white;
-	padding-top: 32px;
-	padding-bottom: 32px;
-	margin-top: 10px;
-	margin-bottom: 0px;
-	height: calc(100vh - 90px);
-}
-
 body { 
-	padding-top:70px;
+	padding-top: 65px;
 	font-family: 'Source Sans Pro', sans-serif;
 }
 
@@ -148,17 +181,17 @@ a:hover .bold-me, a:active .bold-me, a:focus .bold-me {
 
 .white-border {
 	background-color: white;
-	height: 10px;
+	height: 5px;
 }
 
 .blue-border {
 	background-color: #006E96;
-	height: 10px;
+	height: 5px;
 }
 
 .orange-border {
 	background-color: #FFB300;
-	height: 10px;
+	height: 5px;
 }
 
 .navbar {
@@ -190,8 +223,8 @@ a:hover .bold-me, a:active .bold-me, a:focus .bold-me {
 }
 
 .navbar-fixed-top .container {
-	padding-top: 10px;
-	padding-bottom: 10px;
+	padding-top: 5px;
+	padding-bottom: 5px;
 }
 
 .description p {
