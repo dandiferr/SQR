@@ -15,7 +15,7 @@
   float:left;
   margin: 50px auto 100px;
   width:100%;
-  padding:0 5%;
+  padding:0;
   transform:skew(0deg,-5deg);
 -ms-transform:skew(0deg,-10deg);
 -webkit-transform:skew(0deg,-5deg); 
@@ -50,6 +50,15 @@
   font-size: 2rem;
   transform: translate(-50%, -50%);
   white-space:nowrap;
+}
+
+@media (max-width: 767px){
+	.wrapper > .container {
+		padding: 0;
+	}
+	.product-info {
+		margin: 0;
+	}
 }
 
 @media (min-width:992px){
