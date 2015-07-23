@@ -54,11 +54,13 @@
 	background-color: #FFB300;
 	color: white;
 	border-radius: 25px;
+	outline: none;
 }
 
-.btn-wh:hover, .btn-wh:active, .btn-wh:focus {
+.btn-wh:hover, .btn-wh:active, .btn-wh:focus, .btn-wh:active:focus {
 	background-color: #FFB300;
 	color: white;
+	outline: none;
 }
 
 .btn-whb {
