@@ -2,7 +2,7 @@
 
 .headerimage {
 	background-color: white;
-	background: url(/assets/img/Optimized-SF_background.jpg) no-repeat center fixed;
+	background: url(/assets/img/Optimized-SF_background.jpg) no-repeat center center fixed;
 	min-height:400px;
 	height: calc(60vh);
 	width:100%;
@@ -13,13 +13,18 @@
 #backshape .wrapper {
   display: block;
   float:left;
-  margin:50px auto 100px;
+  margin: 50px auto 100px;
   width:100%;
   padding:0 5%;
   transform:skew(0deg,-5deg);
 -ms-transform:skew(0deg,-10deg);
 -webkit-transform:skew(0deg,-5deg); 
 }
+
+.wrapper > .container {
+	max-width: 970px;
+}
+
 .product {
   transform:skew(0deg,-5deg);
 -ms-transform:skew(0deg,-10deg); /* IE 9 */
@@ -27,39 +32,83 @@
 }
 
 .product-info {
-	min-height: 200px;
+	height: 250px;
 	margin: 15px auto;
-	padding: 15px;
-  	background: grey;
+	padding: 0;
+}
+
+.product-info h2 {
+  font-family: 'Roboto', sans-serif;
+  font-weight: 900;
+  color: white;
+  text-transform: uppercase;
+  margin: 0;
+  padding: 0;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  font-size: 2rem;
+  transform: translate(-50%, -50%);
+  white-space:nowrap;
+}
+
+@media (min-width:992px){
+	.product-info {
+		height:300px;
+	}
+	.product-info h2{
+		font-size: 24px;
+	}
 }
 
 #sanfrancisco {
-	background: url(/assets/img/sanfrancisco.jpg) no-repeat;
+	background: linear-gradient(
+      rgba(0, 0, 0, 0.2),
+      rgba(0, 0, 0, 0.2)
+    ), url(/assets/img/sanfrancisco.jpg) no-repeat center center;
+	-webkit-background-size: cover;
+	-moz-background-size: cover;
+	-o-background-size: cover;
 	background-size: cover;
 }
 
 #newyork {
-	background: url(/assets/img/newyork.jpg) no-repeat;
+	background: linear-gradient(
+      rgba(0, 0, 0, 0.2),
+      rgba(0, 0, 0, 0.2)
+    ), url(/assets/img/newyork.jpg) no-repeat center center;
 	background-size: cover;
 }
 
 #seattle {
-	background: url(/assets/img/seattle.jpg) no-repeat;
+	background: linear-gradient(
+      rgba(0, 0, 0, 0.2),
+      rgba(0, 0, 0, 0.2)
+    ), url(/assets/img/seattle.jpg) no-repeat center center;
 	background-size: cover;
 }
 
 #losangeles {
-	background: url(/assets/img/losangeles.jpg) no-repeat;
+	background: linear-gradient(
+      rgba(0, 0, 0, 0.2),
+      rgba(0, 0, 0, 0.2)
+    ), url(/assets/img/losangeles.jpg) no-repeat center center;
 	background-size: cover;
 }
 
 #austin {
-	background: url(/assets/img/austin.jpg) no-repeat;
+	background: linear-gradient(
+      rgba(0, 0, 0, 0.2),
+      rgba(0, 0, 0, 0.2)
+    ), url(/assets/img/austin.jpg) no-repeat center center;
 	background-size: cover;
 }
 
 #boston {
-	background: url(/assets/img/boston.jpg) no-repeat;
+	background: linear-gradient(
+      rgba(0, 0, 0, 0.2),
+      rgba(0, 0, 0, 0.2)
+    ), url(/assets/img/boston.jpg) no-repeat center center;
 	background-size: cover;
 }
 

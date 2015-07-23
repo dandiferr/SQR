@@ -8,7 +8,7 @@ angular.module('appRoutes', []).config(['$routeProvider', '$locationProvider', f
 			controller: 'MainController'
 		})
 
-		.when('/jobs', {
+		.when('/jobs/:city', {
 			templateUrl: 'views/jobs.html',
 			controller: 'JobsController'
 		})
