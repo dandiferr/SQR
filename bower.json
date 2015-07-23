@@ -9,6 +9,7 @@
     "fontawesome": "latest",
     "angular-bootstrap": "~0.13.0",
     "angular-loading-bar": "~0.8.0",
-    "angular-payments": "2472bc9befa25678"
+    "angular-payments": "2472bc9befa25678",
+    "ngInfiniteScroll": "1.0.0"
   }
 }

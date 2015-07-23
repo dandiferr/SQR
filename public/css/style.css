@@ -1,13 +1,46 @@
 @import url(http://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700);
-/*
-#home:before { 
-  background: url(/assets/img/Optimized-SF_background.jpg) no-repeat center fixed; 
-  -webkit-background-size: cover;
-  -moz-background-size: cover;
-  -o-background-size: cover;
-  background-size: cover;
+
+.headerimage {
+	background-color:#003a6f;
+	height:600px;
+	width:100%;
+	background-size:cover;
+	position:relative;
+	z-index:-1;
 }
-*/
+#backshape .wrapper {
+  display: block;
+  float:left;
+  margin:50px auto 200px;
+  width:100%;
+  padding:0 5%;
+  transform:skew(0deg,-5deg);
+-ms-transform:skew(0deg,-10deg);
+-webkit-transform:skew(0deg,-5deg); 
+}
+.product {
+  float:left;
+  width:29%;
+  min-height:200px;
+  background:blue;
+  margin:2%;
+  transform:skew(0deg,-5deg);
+-ms-transform:skew(0deg,-10deg); /* IE 9 */
+-webkit-transform:skew(0deg,0deg); /* Safari and Chrome */
+}
+#backshape {
+	position: relative;
+  z-index:2;
+  display:block;
+  float:left;
+  margin-top:-100px;
+  width:100%;
+  background:white;
+  transform:skew(0deg,10deg);
+-ms-transform:skew(0deg,10deg); /* IE 9 */
+-webkit-transform:skew(0deg,5deg); /* Safari and Chrome */
+}
+
 #home {
   position: relative;
   z-index: 1;
@@ -218,7 +251,8 @@ textarea { resize:vertical; }
 	text-align: center;
 	font: normal 18px 'Source Sans Pro', sans-serif;
 	padding: 45px;
-	z-index: 1;
+	z-index: 2;
+	float: left;
 }
 
 .footer-basic-centered .footer-company-motto{
