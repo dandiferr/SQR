@@ -1,0 +1,102 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+	<base href="/">
+
+	<title>Who's Hiring Me? | Internship Search</title>
+
+	<!-- CSS -->
+	<link rel="stylesheet" href="libs/bootstrap/dist/css/bootstrap.min.css">
+	<link rel="stylesheet" href="css/style.css"> <!-- custom styles -->
+	<link rel="stylesheet" href="libs/fontawesome/css/font-awesome.min.css">
+	<link rel='stylesheet' href='libs/angular-loading-bar/build/loading-bar.min.css' type='text/css' media='all' />
+
+	<!-- JS -->
+	<script src="libs/jquery/dist/jquery.min.js"></script>
+	<script src="libs/angular/angular.min.js"></script>
+	<script src="libs/angular-route/angular-route.min.js"></script>
+	<script src="libs/bootstrap/dist/js/bootstrap.min.js"></script>
+	<script type='text/javascript' src='libs/ngInfiniteScroll/build/ng-infinite-scroll.min.js'></script>
+	<script type='text/javascript' src='libs/angular-loading-bar/build/loading-bar.min.js'></script>
+	<script type="text/javascript" src="libs/angular-payments/lib/angular-payments.min.js"></script>
+	<script src="https://js.stripe.com/v2/"></script>
+	<script>
+		Stripe.setPublishableKey('pk_test_GS62GjSJKEE5at6B7BISelM9');
+	</script>
+
+	<!-- ANGULAR CUSTOM -->
+	<script src="js/controllers/MainCtrl.js"></script>
+	<script src="js/controllers/AddJobCtrl.js"></script>
+	<script src="js/services/AddJobService.js"></script>
+	<script src="js/controllers/JobCtrl.js"></script>
+	<script src="js/controllers/JobsCtrl.js"></script>
+	<script src="js/services/JobService.js"></script>
+	<script src="js/appRoutes.js"></script>
+	<script src="js/app.js"></script>
+
+	<link rel="shortcut icon" href="/assets/img/logo-favicon.png" type="image/x-icon" />
+</head>
+<body ng-app="sampleApp" ng-controller="MainController">
+
+	<div class="container">
+		<!-- HEADER -->
+		<nav class="navbar navbar-default navbar-fixed-top">
+			<div>
+				<div class="orange-border"></div>
+			</div>
+			<div class="container">
+				<div class="navbar-header">
+					<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#collapse-me" aria-expanded="false">
+						<span class="icon-bar"></span>
+						<span class="icon-bar"></span>
+						<span class="icon-bar"></span>
+					</button>
+					<a class="navbar-brand" href="/">
+						<img src="/assets/img/logo.png" height="50" alt="WhosHiringMe Logo">
+					</a>
+				</div>
+				<div class="collapse navbar-collapse" id="collapse-me">
+					<ul class="nav navbar-nav navbar-left">
+						<li class="text-center"><a href="/jobs">Internships</a></li>
+						<li class="text-center"><a href="#">Full-Time</a></li>
+					</ul>
+					<ul class="nav navbar-nav navbar-right">
+						<li class="text-center">
+							<a href="/aboutus">About Us</a>
+						</li>
+						<li class="text-center">
+							<button ng-click="go('/postajob')" class="btn btn-wh navbar-btn">Post a Job!</button>
+						</li>
+					</ul>
+			    </div><!-- /.navbar-collapse -->
+			</div>
+		</nav>
+	</div>
+
+	<!-- ANGULAR DYNAMIC CONTENT -->
+	<div ng-view autoscroll></div>
+
+
+</body>
+<footer class="footer-basic-centered">
+
+			<p class="footer-company-motto">Your job hunt ends here.</p>
+
+			<p class="footer-links">
+				<a href="/">Home</a>
+				·
+				<a href="/jobs">Internships</a>
+				·
+				<a href="#">Full-Time</a>
+				·
+				<a href="/aboutus">About Us</a>
+				·
+				<a href="/postajob">Post A Job</a>
+			</p>
+
+			<p class="footer-company-name">Who's Hiring Me? &copy; 2015</p>
+
+</footer>
+</html>

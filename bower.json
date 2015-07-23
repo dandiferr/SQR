@@ -1,0 +1,14 @@
+{
+  "name": "angular",
+  "version": "1.0.0",
+  "dependencies": {
+    "bootstrap": "latest",
+    "angular": "latest",
+    "angular-route": "latest",
+    "jquery": "latest",
+    "fontawesome": "latest",
+    "angular-bootstrap": "~0.13.0",
+    "angular-loading-bar": "~0.8.0",
+    "angular-payments": "2472bc9befa25678"
+  }
+}
