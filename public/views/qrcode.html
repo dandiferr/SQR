@@ -1,7 +1,9 @@
 <div class="partial-view container">
   <div class="jumbotron">
-    <div>
-		<qr ng-if="string != ''" text="string" ng-show="authData"></qr>
+    <div class="row row-centered">
+    	<div class="col-sm-4 col-centered">
+			<qr ng-if="string != ''" size="300" text="string" ng-show="authData"></qr>
+		</div>
     </div>
   </div>
 </div>

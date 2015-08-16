@@ -1,3 +1,3 @@
 module.exports = {
-	url : 'mongodb://localhost:27017/socialqr'
+	url : process.env.MONGOLAB_URI || 'mongodb://localhost:27017/socialqr'
 }
