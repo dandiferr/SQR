@@ -79,7 +79,7 @@ module.exports = function(app) {
                 console.log(err);
                 res.status(400);
                 res.send(err);
-            }else
+            }else{
                 job.name = req.body.name;
                 job.facebook= req.body.facebook;
                 job.twitter= req.body.twitter;
@@ -93,6 +93,7 @@ module.exports = function(app) {
                         res.json(jobs);
                     })
                 })
+	     }
         });
     });
 
