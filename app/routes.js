@@ -35,7 +35,7 @@ module.exports = function(app) {
 
     app.get('/api/user/:fb_token', function(req, res) {
         // use mongoose to get all nerds in the database
-        Job.findOne({fb_token : req.params.fb_token}, 'name facebook twitter linkedin instagram', function(err, job) {
+        Job.findOne({fb_token : req.params.fb_token}, function(err, job) {
 
             // if there is an error retrieving, send the error. 
                             // nothing after res.send(err) will execute
@@ -50,10 +50,6 @@ module.exports = function(app) {
         // use mongoose to get all nerds in the database
         Job.create({
             name: req.body.name,
-            facebook: req.body.facebook,
-            twitter: req.body.twitter,
-            linkedin: req.body.linkedin,
-            instagram: req.body.instagram,
             fb_token: req.body.fb_token
         }, function(err, job) {
             if(err) {
@@ -85,6 +81,11 @@ module.exports = function(app) {
                 job.twitter= req.body.twitter;
                 job.linkedin= req.body.linkedin;
                 job.instagram= req.body.instagram;
+                job.pinterest= req.body.pinterest;
+                job.snapchat= req.body.snapchat;
+                job.whatsapp= req.body.whatsapp;
+                job.youtube= req.body.youtube;
+                job.reddit= req.body.reddit;
                 job.save(function(err, job){
 
                     Job.find(function(err, jobs) {

@@ -35,6 +35,11 @@ angular.module('AddJobCtrl', ['ja.qr'])
 					$scope.formData.twitter = data.twitter;
 					$scope.formData.linkedin = data.linkedin;
 					$scope.formData.instagram = data.instagram;
+	                $scope.formData.pinterest= data.pinterest;
+	                $scope.formData.snapchat= data.snapchat;
+	                $scope.formData.whatsapp= data.whatsapp;
+	                $scope.formData.youtube= data.youtube;
+	                $scope.formData.reddit= data.reddit;
 				}
 			})
 			.error(function(data) {
@@ -45,7 +50,6 @@ angular.module('AddJobCtrl', ['ja.qr'])
 	function createJob() {
 		$http.post('/api/jobs', $scope.formData)
 			.success(function(data) {
-				$scope.formData = {}; // clear the form so our user is ready to enter another
 				console.log(data);
 				//$location.path('jobs');
 			})
@@ -59,6 +63,7 @@ angular.module('AddJobCtrl', ['ja.qr'])
 			.success(function(data) {
 				console.log(data);
 				//$location.path('jobs');
+				alert("Saved!");
 			})
 			.error(function(data) {
 				console.log('Error: ' + data);

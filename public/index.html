@@ -13,6 +13,7 @@
 	<link rel="stylesheet" href="libs/fontawesome/css/font-awesome.min.css">
 	<link rel='stylesheet' href='libs/angular-loading-bar/build/loading-bar.min.css' type='text/css' media='all' />
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+	<link rel="stylesheet" type="text/css" href="libs/fa-snapchat/fa-snapchat.css">
 
 	<!-- JS -->
 	<script src="libs/jquery/dist/jquery.min.js"></script>
@@ -52,7 +53,6 @@
 	        </a>
 	        <ul class="nav navbar-nav pull-right">
 	            <li><a href="/job">Scan</a></li>
-	            <li><a href="/qrcode" ng-show="authData">My SQR</a></li>
 	            <li><a href="#" ng-hide="authData" ng-click="login()">Login</a></li>
 	            <li class="dropdown" ng-show="authData">
 	                <a href="#" class="dropdown-toggle"
@@ -60,6 +60,7 @@
 	                    My Account<strong class="caret"></strong>
 	                </a>
 	                <ul id="dropdown" class="dropdown-menu dropdown-menu-right">
+	            		<li><a href="/qrcode">My SQR</a></li>
 	                    <li><a href="/login">Account Settings</a></li>
 	                    <li><a href="#" ng-click="logout()">Logout</a></li>
 	                </ul>
@@ -68,22 +69,6 @@
 	    </div>
 	</div>
 
-	<!--<div class="container">
-		<div class="navbar navbar-default navbar-fixed-top">
-		    <div class="navbar-header pull-left">
-		      <a class="navbar-brand" href="/home">Social QR</a>
-		    </div>
-		    <div class="pull-right nav navbar-nav">
-	      		<a href="/job">Scan</a>
-	      		<a href="/qrcode" type="button" class="btn btn-default navbar-btn" ng-show="authData">My SQR</a>
-	      		<a href="/login" type="button" class="btn btn-default navbar-btn" ng-show="authData">My Account</a>
-	      		<button type="button" class="btn btn-default navbar-btn" ng-click="logout()" ng-show="authData">Logout</button>
-	      		<button type="button" class="btn btn-default navbar-btn" ng-click="login()" ng-hide="authData">Login</button>
-		    </div>
-		</div>
-	</div>-->
-
-	<!-- ANGULAR DYNAMIC CONTENT -->
 	<div ng-view autoscroll></div>
 
 <footer class="footer text-center">

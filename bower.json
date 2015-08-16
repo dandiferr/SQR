@@ -11,6 +11,7 @@
     "angular-loading-bar": "~0.8.0",
     "angular-payments": "2472bc9befa25678",
     "ngInfiniteScroll": "1.0.0",
-    "angular-qr": "latest"
+    "angular-qr": "latest",
+    "fa-snapchat": "~0.1.2"
   }
 }

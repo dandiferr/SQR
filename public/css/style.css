@@ -19,6 +19,14 @@
     margin-right:-4px;
 }
 
+.snapchat {
+    font-size: 21.5px !important;
+}
+
+.social-icon {
+    color: #337ab7;
+}
+
 canvas {
     display: block;
     margin-left: auto;

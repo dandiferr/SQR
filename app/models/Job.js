@@ -8,5 +8,10 @@ module.exports = mongoose.model('Job', {
 	twitter: {type : String, default: ''},
 	linkedin: {type : String, default: ''},
 	instagram: {type : String, default: ''},
-	fb_token: {type : String, default: ''}
+	fb_token: {type : String, default: ''},
+	pinterest: {type : String, default: ''},
+	snapchat: {type : String, default: ''},
+	whatsapp: {type : String, default: ''},
+	youtube: {type : String, default: ''},
+	reddit: {type : String, default: ''}
 });

@@ -3,17 +3,32 @@
       <div>
         <h2>{{user.name}}</h2>
       </div>
-      <div>
-        <h2><a ng-show="user.facebook" href="https://www.facebook.com/{{user.facebook}}" target="_blank"><i class="fa fa-facebook-official fa-3x"></i></a></h2>
+      <div class="col-lg-4 social-icon col-sm-6 text-left" ng-show="user.facebook">
+        <h2><a href="https://www.facebook.com/{{user.facebook}}" target="_blank"><i class="fa fa-facebook-official fa-3x"></i></a> @{{user.facebook}}</h2>
       </div>
-      <div>
-        <h2><a ng-show="user.twitter" href="https://www.twitter.com/{{user.twitter}" target="_blank"><i class="fa fa-twitter-square fa-3x"></i></a></h2>
+      <div class="col-lg-4 social-icon col-sm-6 text-left" ng-show="user.twitter">
+        <h2><a href="https://www.twitter.com/{{user.twitter}" target="_blank"><i class="fa fa-twitter-square fa-3x"></i></a> @{{user.twitter}}</h2>
       </div>
-      <div>
-        <h2><a ng-show="user.linkedin" href="https://www.linkedin.com/in/{{user.linkedin}}" target="_blank"><i class="fa fa-linkedin-square fa-3x"></i></a></h2>
+      <div class="col-lg-4 social-icon col-sm-6 text-left" ng-show="user.linkedin">
+        <h2><a href="https://www.linkedin.com/in/{{user.linkedin}}" target="_blank"><i class="fa fa-linkedin-square fa-3x"></i></a> @{{user.linkedin}}</h2>
       </div>
-      <div>
-        <h2><a ng-show="user.instagram" href="https://www.instagram.com/{{user.instagram}}" target="_blank"><i class="fa fa-instagram fa-3x"></i></a></h2>
+      <div class="col-lg-4 social-icon col-sm-6 text-left" ng-show="user.instagram">
+        <h2><a href="https://www.instagram.com/{{user.instagram}}" target="_blank"><i class="fa fa-instagram fa-3x"></i></a> @{{user.instagram}}</h2>
+      </div>
+      <div class="col-lg-4 social-icon col-sm-6 text-left" ng-show="user.pinterest">
+        <h2><a href="https://www.pinterest.com/{{user.pinterest}}" target="_blank"><i class="fa fa-pinterest-square fa-3x"></i></a> @{{user.pinterest}}</h2>
+      </div>
+      <div class="col-lg-4 social-icon col-sm-6 text-left" ng-show="user.snapchat">
+        <h2><i class="fa fa-snapchat fa-3x"></i> @{{user.snapchat}}</h2>
+      </div>
+      <div class="col-lg-4 social-icon col-sm-6 text-left" ng-show="user.whatsapp">
+        <h2><i class="fa fa-whatsapp fa-3x"></i> @{{user.whatsapp}}</h2>
+      </div>
+      <div class="col-lg-4 social-icon col-sm-6 text-left" ng-show="user.youtube">
+        <h2><a href="https://www.youtube.com/{{user.youtube}}" target="_blank"><i class="fa fa-youtube-square fa-3x"></i></a> @{{user.youtube}}</h2>
+      </div>
+      <div class="col-lg-4 social-icon col-sm-6 text-left" ng-show="user.reddit">
+        <h2><a href="https://www.reddit.com/{{user.reddit}}" target="_blank"><i class="fa fa-reddit-square fa-3x"></i></a> @{{user.reddit}}</h2>
       </div>
     </div>
 </div>
