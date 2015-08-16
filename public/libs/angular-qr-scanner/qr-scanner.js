@@ -20,7 +20,7 @@ angular.module('qrScanner', ["ng"]).directive('qrScanner', ['$interval', '$windo
       var video = $window.document.createElement('video');
       video.setAttribute('width', width);
       video.setAttribute('height', height);
-      video.setAttribute('style', '-moz-transform:rotateY(-180deg);-webkit-transform:rotateY(-180deg);transform:rotateY(-180deg);');
+      //video.setAttribute('style', '-moz-transform:rotateY(-180deg);-webkit-transform:rotateY(-180deg);transform:rotateY(-180deg);');
       video.setAttribute('autoplay','');
       var canvas = $window.document.createElement('canvas');
       canvas.setAttribute('id', 'qr-canvas');
