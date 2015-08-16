@@ -2,16 +2,17 @@
 <html lang="en">
 <head>
 	<meta charset="UTF-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
 	<base href="/">
 
-	<title>Who's Hiring Me? | Internship Search</title>
+	<title>Social QR</title>
 
 	<!-- CSS -->
 	<link rel="stylesheet" href="libs/bootstrap/dist/css/bootstrap.min.css">
 	<link rel="stylesheet" href="css/style.css"> <!-- custom styles -->
 	<link rel="stylesheet" href="libs/fontawesome/css/font-awesome.min.css">
 	<link rel='stylesheet' href='libs/angular-loading-bar/build/loading-bar.min.css' type='text/css' media='all' />
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
 
 	<!-- JS -->
 	<script src="libs/jquery/dist/jquery.min.js"></script>
@@ -20,81 +21,84 @@
 	<script src="libs/bootstrap/dist/js/bootstrap.min.js"></script>
 	<script type='text/javascript' src='libs/ngInfiniteScroll/build/ng-infinite-scroll.min.js'></script>
 	<script type='text/javascript' src='libs/angular-loading-bar/build/loading-bar.min.js'></script>
-	<script type="text/javascript" src="libs/angular-payments/lib/angular-payments.min.js"></script>
-	<script src="https://js.stripe.com/v2/"></script>
-	<script>
-		Stripe.setPublishableKey('pk_test_GS62GjSJKEE5at6B7BISelM9');
-	</script>
+	<!-- Firebase -->
+    <script src="https://cdn.firebase.com/js/client/2.2.9/firebase.js"></script>
+    <!-- AngularFire -->
+    <script src="https://cdn.firebase.com/libs/angularfire/1.1.1/angularfire.js"></script>
 
 	<!-- ANGULAR CUSTOM -->
 	<script src="js/controllers/MainCtrl.js"></script>
 	<script src="js/controllers/AddJobCtrl.js"></script>
-	<script src="js/services/AddJobService.js"></script>
 	<script src="js/controllers/JobCtrl.js"></script>
-	<script src="js/controllers/JobsCtrl.js"></script>
-	<script src="js/services/JobService.js"></script>
+	<script src="js/controllers/QRCtrl.js"></script>
+	
+	<script src="js/controllers/AuthCtrl.js"></script>
 	<script src="js/appRoutes.js"></script>
+	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.0.0-alpha1/jquery.min.js"></script>
 	<script src="js/app.js"></script>
+	<script type="text/javascript" src="libs/angular-qr/lib/qrcode.js"></script>
+	<script type="text/javascript" src="libs/angular-qr/angular-qr.min.js"></script>
+	<script src="libs/angular-qr-scanner/qr-scanner.js"></script>
+	<script src="libs/angular-qr-scanner/src/jsqrcode-combined.min.js"></script>
 
 	<link rel="shortcut icon" href="/assets/img/logo-favicon.png" type="image/x-icon" />
 </head>
 <body ng-app="sampleApp" ng-controller="MainController">
 
-	<div class="container">
-		<!-- HEADER -->
-		<nav class="navbar navbar-default navbar-fixed-top">
-			<div>
-				<div class="orange-border"></div>
-			</div>
-			<div class="container">
-				<div class="navbar-header">
-					<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#collapse-me" aria-expanded="false">
-						<span class="icon-bar"></span>
-						<span class="icon-bar"></span>
-						<span class="icon-bar"></span>
-					</button>
-					<a class="navbar-brand" href="/">
-						<img src="/assets/img/logo.png" height="50" alt="WhosHiringMe Logo">
-					</a>
-				</div>
-				<div class="collapse navbar-collapse" id="collapse-me">
-					<ul class="nav navbar-nav navbar-right">
-						<li class="text-center"><a href="/jobs/sanfrancisco">Internships</a></li>
-						<li class="text-center"><a href="#">Full-Time</a></li>
-						<li class="text-center">
-							<a href="/aboutus">About Us</a>
-						</li>
-						<li class="text-center">
-							<button ng-click="go('/postajob')" class="btn btn-wh-invert navbar-btn">Post a Job</button>
-						</li>
-					</ul>
-			    </div><!-- /.navbar-collapse -->
-			</div>
-		</nav>
+	<div class="navbar navbar-default nav-links">
+	    <div class="container">
+	        <a class="mini-navbar navbar-brand" href="/home">
+	            SQR
+	        </a>
+	        <ul class="nav navbar-nav pull-right">
+	            <li><a href="/job">Scan</a></li>
+	            <li><a href="/qrcode" ng-show="authData">My SQR</a></li>
+	            <li><a href="#" ng-hide="authData" ng-click="login()">Login</a></li>
+	            <li class="dropdown" ng-show="authData">
+	                <a href="#" class="dropdown-toggle"
+	                    data-toggle="dropdown">
+	                    My Account<strong class="caret"></strong>
+	                </a>
+	                <ul id="dropdown" class="dropdown-menu dropdown-menu-right">
+	                    <li><a href="/login">Account Settings</a></li>
+	                    <li><a href="#" ng-click="logout()">Logout</a></li>
+	                </ul>
+	            </li>
+	        </ul>
+	    </div>
 	</div>
+
+	<!--<div class="container">
+		<div class="navbar navbar-default navbar-fixed-top">
+		    <div class="navbar-header pull-left">
+		      <a class="navbar-brand" href="/home">Social QR</a>
+		    </div>
+		    <div class="pull-right nav navbar-nav">
+	      		<a href="/job">Scan</a>
+	      		<a href="/qrcode" type="button" class="btn btn-default navbar-btn" ng-show="authData">My SQR</a>
+	      		<a href="/login" type="button" class="btn btn-default navbar-btn" ng-show="authData">My Account</a>
+	      		<button type="button" class="btn btn-default navbar-btn" ng-click="logout()" ng-show="authData">Logout</button>
+	      		<button type="button" class="btn btn-default navbar-btn" ng-click="login()" ng-hide="authData">Login</button>
+		    </div>
+		</div>
+	</div>-->
 
 	<!-- ANGULAR DYNAMIC CONTENT -->
 	<div ng-view autoscroll></div>
 
+<footer class="footer text-center">
 
-</body>
-<footer class="footer-basic-centered">
-
-			<p class="footer-company-motto">Your job hunt ends here.</p>
+			<p class="footer-company-motto">Network like never before.</p>
 
 			<p class="footer-links">
 				<a href="/">Home</a>
 				·
-				<a href="/jobs">Internships</a>
-				·
-				<a href="#">Full-Time</a>
-				·
-				<a href="/aboutus">About Us</a>
-				·
-				<a href="/postajob">Post A Job</a>
+				<a href="#" ng-hide="authData" ng-click="login()">Login</a>
+				<a href="#" ng-show="authData" ng-click="logout()">Logout</a>
 			</p>
 
-			<p class="footer-company-name">Who's Hiring Me? &copy; 2015</p>
-
 </footer>
+</body>
+
+
 </html>

@@ -1,4 +1,19 @@
 <div class="partial-view container">
-	<h1>Job</h1>
-	{{job}}
+	<div class="text-center">
+      <div>
+        <h2>{{user.name}}</h2>
+      </div>
+      <div>
+        <h2><a ng-show="user.facebook" href="https://www.facebook.com/{{user.facebook}}" target="_blank"><i class="fa fa-facebook-official fa-3x"></i></a></h2>
+      </div>
+      <div>
+        <h2><a ng-show="user.twitter" href="https://www.twitter.com/{{user.twitter}" target="_blank"><i class="fa fa-twitter-square fa-3x"></i></a></h2>
+      </div>
+      <div>
+        <h2><a ng-show="user.linkedin" href="https://www.linkedin.com/in/{{user.linkedin}}" target="_blank"><i class="fa fa-linkedin-square fa-3x"></i></a></h2>
+      </div>
+      <div>
+        <h2><a ng-show="user.instagram" href="https://www.instagram.com/{{user.instagram}}" target="_blank"><i class="fa fa-instagram fa-3x"></i></a></h2>
+      </div>
+    </div>
 </div>

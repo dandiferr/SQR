@@ -1,63 +1,69 @@
-angular.module('AddJobCtrl', ['angularPayments'])
-.controller('AddJobController', function($scope, $http, $location) {
+angular.module('AddJobCtrl', ['ja.qr'])
+
+.factory("Auth", function($firebaseAuth) {
+  var ref = new Firebase("https://socialqr.firebaseio.com");
+  return $firebaseAuth(ref);
+})
+
+.controller('AddJobController', function($scope, $http, Auth, $location, $routeParams) {
+
+	$scope.user = '';
+
+	$scope.string = '';
+
+	Auth.$onAuth(function(authData) {
+	    $scope.authData = authData;
+
+	    if ($scope.authData) {
+	    	$scope.formData.fb_token = $scope.authData.uid;
+	    	$scope.string = $scope.authData.uid;
+	    	$scope.formData.name = $scope.authData.facebook.displayName;
+	    	findUser($scope.authData);
+	    }
+  	});
+
 	$scope.formData = {};
+
+	function findUser(authData) {
+		$http.get('/api/user/' + $scope.authData.uid)
+			.success(function(data) {
+				$scope.user = data;
+				console.log($scope.user)
+				if(!$scope.user) createJob();
+				else {
+					$scope.formData.facebook = data.facebook;
+					$scope.formData.twitter = data.twitter;
+					$scope.formData.linkedin = data.linkedin;
+					$scope.formData.instagram = data.instagram;
+				}
+			})
+			.error(function(data) {
+				console.log('Error: ' + data);
+			});
+	}
 
 	function createJob() {
 		$http.post('/api/jobs', $scope.formData)
 			.success(function(data) {
 				$scope.formData = {}; // clear the form so our user is ready to enter another
 				console.log(data);
-				$location.path('jobs');
+				//$location.path('jobs');
 			})
 			.error(function(data) {
 				console.log('Error: ' + data);
 			});
 	};
 
-	$scope.showCompany = false;
-	$scope.showPayment = false;
-
-
-	$scope.formData.joburl = "http://"
-	$scope.formData.companyurl = "http://"
-
-
-	$scope.showCompanyButton = function() {
-		if($scope.checkoutForm.jobTitle.$valid &&
-			$scope.checkoutForm.jobUrl.$valid &&
-			$scope.checkoutForm.jobDescription.$valid)
-			$scope.showCompany = true;
+	$scope.editUser = function() {
+		$http.post('/api/users', $scope.formData)
+			.success(function(data) {
+				console.log(data);
+				//$location.path('jobs');
+			})
+			.error(function(data) {
+				console.log('Error: ' + data);
+			});
 	}
-
-	$scope.showPaymentButton = function() {
-		if($scope.checkoutForm.companyName.$valid &&
-			$scope.checkoutForm.companyUrl.$valid &&
-			$scope.checkoutForm.companyDescription.$valid)
-			$scope.showPayment = true;
-	}
-
-
-	$scope.formData.category = "frontend";
-	$scope.formData.baylocation = "eastbay";
-
-	$scope.price = "$100";
-
-	$scope.stripeCallback = function (code, result) {
-		if (result.error) {
-		    console.log(result.error);
-		} else {
-		    console.log(result);
-		    var form = {stripeToken: result.id}
-		    $http.post('/charge/postajob', form)
-		    	.success(function(data) {
-		    		console.log(data);
-		    		createJob();
-		    	})
-		    	.error(function(data) {
-		    		console.log("error " + data);
-		    	})
-		}
-	};
 
 
 	/*$scope.deleteJob = function(id) {

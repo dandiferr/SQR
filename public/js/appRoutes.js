@@ -3,31 +3,30 @@ angular.module('appRoutes', []).config(['$routeProvider', '$locationProvider', f
 	$routeProvider
 
 		// home page
-		.when('/', {
+		.when('/home', {
 			templateUrl: 'views/home.html',
-			controller: 'MainController'
+			controller: 'MainController'	
 		})
 
-		.when('/jobs/:city', {
-			templateUrl: 'views/jobs.html',
-			controller: 'JobsController'
-		})
-
-		.when('/aboutus', {
-			templateUrl: 'views/aboutus.html',
-			controller: 'AddJobController'
+		.when('/job', {
+			templateUrl: 'views/qr.html',
+			controller: 'AuthController'	
 		})
 
 		.when('/job/:job_id', {
 			templateUrl: 'views/job.html',
 			controller: 'JobController'	
 		})
-		.when('/postajob', {
+		.when('/login', {
 			templateUrl: 'views/post.html',
 			controller: 'AddJobController'
 		})
+		.when('/qrcode', {
+			templateUrl: 'views/qrcode.html',
+			controller: 'QRController'
+		})
 		.otherwise({
-			redirectTo: '/'
+			redirectTo: '/home'
 		});
 
 	$locationProvider.html5Mode(true);

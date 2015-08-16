@@ -1,1 +1,1 @@
-angular.module('sampleApp', ['ngRoute', 'appRoutes', 'MainCtrl', 'JobsCtrl', 'AddJobCtrl', 'AddJobService', 'JobCtrl', 'JobService']);
+angular.module('sampleApp', ['firebase', 'ngRoute', 'appRoutes', 'MainCtrl', 'AddJobCtrl', 'AuthCtrl', 'JobCtrl', 'QRCtrl']);

@@ -1,13 +1,25 @@
-angular.module('MainCtrl', []).controller('MainController', function($scope, $location) {
+angular.module('MainCtrl', []).controller('MainController', function($scope, $location, Auth) {
 
 	$scope.go = function(path) {
 		$location.path(path);
-		$(".navbar-collapse").collapse('hide')
 	};
-})
 
-$(document).ready(function () {
-  $(".navbar-nav li a").click(function(event) {
-    $(".navbar-collapse").collapse('hide');
-  });
-});
+	$scope.logout = function() {
+	    Auth.$unauth();
+	    $location.path('/home');
+  	};
+
+  	$scope.login = function() {
+	    Auth.$authWithOAuthPopup("facebook")
+	    .then(function(data) {
+	    	$location.path('/login');
+	    })
+	    .catch(function(error) {
+			console.error("Error authenticating with GitHub:", error);
+	    });
+	};
+
+	Auth.$onAuth(function(authData) {
+	    $scope.authData = authData;
+  	});
+})

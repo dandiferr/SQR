@@ -2,162 +2,83 @@
 <div class="partial-view container">
 	<!-- FORM TO CREATE jobS -->
 	<div id="jobposter">
-		<h2 class="text-center">Post a job</h2>
-		<div id="job-form" class="row">
-			<div class="col-sm-12">
-				<form class="form-horizontal" stripe-form="stripeCallback" name="checkoutForm">
-					<hr>
-					<div id="job">
-						<div class="form-group">
-							<label for="jobTitle" class="col-sm-2 control-label">Job Title</label>
-							<div class="col-sm-6">
-								<input type="text" class="form-control input-lg" id="jobTitle" name="jobTitle" ng-model="formData.title" required>
-								<span class="help-block">i.e. "Software Engineer Intern" or "Data Science Intern"</span>
-							</div>
-						</div>
-						<div class="form-group">
-							<label for="category" class="col-sm-2 control-label">Categories</label>
-							<div class="radio col-sm-8">
-								<label>
-									<input type="radio" ng-model="formData.category" id="categories1" value="frontend" checked>
-									Front-End
-								</label>
-							</div>
-							<div class="radio col-sm-offset-2 col-sm-8">
-								<label>
-									<input type="radio" ng-model="formData.category" id="categories2" value="backend">
-									Back-end
-								</label>
-							</div>
-							<div class="radio col-sm-offset-2 col-sm-8">
-								<label>
-									<input type="radio" ng-model="formData.category" id="categories3" value="design">
-									Design
-								</label>
-							</div>
-						</div>
-						<div class="form-group">
-							<label for="jobURL" class="col-sm-2 control-label">Job URL</label>
-							<div class="col-sm-6">
-								<input type="url" class="form-control input-lg" name="jobUrl" ng-model="formData.joburl" required >
-							</div>
-						</div>
-						<div class="form-group">
-							<label for="jobDescription" class="col-sm-2 control-label">Job Description</label>
-							<div class="col-sm-8">
-								<textarea class="form-control input-lg" rows="6" name="jobDescription" ng-model="formData.description" required ></textarea>
-							</div>
-						</div>
-						<div class="form-group">
-							<button class="col-sm-offset-4 col-sm-4 btn btn-wh btn-lg" ng-click="showCompanyButton()" ng-hide="showCompany" >Next</button>
-						</div>
-					</div>
-					<div class="company" ng-show="showCompany">
-						<hr>
-						<div class="form-group">
-							<label for="jobCompany" class="col-sm-2 control-label">Company Name</label>
-							<div class="col-sm-6">
-								<input type="text" class="form-control input-lg" name="companyName" ng-model="formData.company" required >
-							</div>
-						</div>
-						<div class="form-group">
-							<label for="companyURL" class="col-sm-2 control-label">Company URL</label>
-							<div class="col-sm-6">
-								<input type="url" class="form-control input-lg" name="companyUrl" ng-model="formData.companyurl" required >
-							</div>
-						</div>
-						<div class="form-group">
-							<label for="baylocation" class="col-sm-2 control-label">Bay Area Location</label>
-							<div class="col-sm-10 vertical-radio">
-								<div class="radio col-sm-10">
-									<label>
-										<input type="radio" ng-model="formData.baylocation" value="eastbay">
-										East Bay
-									</label>
-								</div>
-								<div class="radio col-sm-10">
-									<label>
-										<input type="radio" ng-model="formData.baylocation" value="sanfrancisco">
-										San Francisco
-									</label>
-								</div>
-								<div class="radio col-sm-10">
-									<label>
-										<input type="radio" ng-model="formData.baylocation" value="southbay">
-										South Bay
-									</label>
-								</div>
-							</div>
-						</div>
-						<div class="form-group">
-							<label for="jobDescription" class="col-sm-2 control-label">Company Description</label>
-							<div class="col-sm-8">
-								<textarea class="form-control input-lg" rows="6" name="companyDescription" ng-model="formData.companyDescription" required ></textarea>
-							</div>
-						</div>
-						<div class="form-group">
-							<button class="col-sm-offset-4 col-sm-4 btn btn-wh btn-lg" ng-click="showPaymentButton()" ng-hide="showPayment" >Next</button>
-						</div>
-					</div>
-					<div id="payment" ng-show="showPayment">
-						<hr>
-						<div class="form-group">
-							<label for="companyURL" class="col-sm-2 control-label">Promo Code</label>
-							<div class="job-price col-sm-8">
-								<div class="col-sm-6">
-									<input type="url" class="form-control input-lg" id="companyUrl" ng-model="formData.promoCode">
 
-								</div>
-								<div class="col-sm-6 text-right">
-									<h3>{{price}}</h3>
-								</div>
-							</div>
-						</div>
-						<hr>
+		<div class="row" ng-show="authData">
+			<div class="col-sm-4 col-sm-offset-4">
+				<h1>Account Settings</h1>
+				<br>
+			</div>
+		</div>
+		<div id="job-form" class="row" ng-show="authData">
+			<div class="col-sm-12">
+				<form class="form-horizontal" name="checkoutForm">
+					<div id="job" class="col-sm-6">
 						<div class="form-group">
-							<label class="col-sm-2 control-label">Name</label>
-							<div class="col-sm-6" ng-class="{'has-error': checkoutForm.name.$invalid && checkoutForm.name.$dirty}">
-								<input class="form-control input-lg" ng-model="name" placeholder="Full Name" name="name" required />
-								<span class="help-block" ng-show="checkoutForm.name.$error.required && checkoutForm.name.$dirty">Required</span>
-								<span class="help-block" ng-show="checkoutForm.name.$error.name">Name is invalid.</span>
-							</div>
-						</div>
-						<div class="form-group">
-							<label class="col-sm-2 control-label">Credit Card Number</label>
-							<div class="col-sm-6" ng-class="{'has-error': checkoutForm.card.$invalid && checkoutForm.card.$dirty}">
-								<input class="form-control input-lg" ng-model="number" ng-model-options="{ debounce: 250 }" placeholder="Card Number" payments-format="card" payments-validate="card" name="card" required />
-								<span class="help-block" ng-show="checkoutForm.card.$error.required && checkoutForm.card.$dirty">Required</span>
-								<span class="help-block" ng-show="checkoutForm.card.$error.card">Credit card is invalid.</span>
+							<label for="jobTitle" class="col-sm-2 control-label">Name</label>
+							<div class="col-sm-8">
+								<input type="text" class="form-control input-lg" id="jobTitle" name="jobTitle" ng-model="formData.name" >
 							</div>
 						</div>
 						<div class="form-group">
-							<label class="col-sm-2 control-label">CVC</label>
-							<div class="col-sm-6" ng-class="{'has-error': checkoutForm.cvc.$invalid && checkoutForm.cvc.$dirty}">
-								<input class="form-control input-lg" ng-model="cvc" ng-model-options="{ debounce: 250 }" placeholder="CVC" payments-format="cvc" payments-validate="cvc" name="cvc" required />
-								<span class="help-block" ng-show="checkoutForm.cvc.$error.required && checkoutForm.cvc.$dirty">Required</span>
-								<span class="help-block" ng-show="checkoutForm.cvc.$error.cvc">CVC is invalid.</span>
+							<label for="jobTitle" class="col-sm-2 control-label">Facebook</label>
+							<div class="col-sm-8">
+								<input type="text" class="form-control input-lg" name="jobDescription" ng-model="formData.facebook"  >
 							</div>
 						</div>
 						<div class="form-group">
-							<label class="col-sm-2 control-label">Expiry</label>
-							<div class="col-sm-6" ng-class="{'has-error': checkoutForm.expiry.$invalid && checkoutForm.expiry.$dirty}">
-								<input class="form-control input-lg" ng-model="expiry" placeholder="Expiration" payments-format="expiry" payments-validate="expiry" name="expiry" required />
-								<span class="help-block" ng-show="checkoutForm.expiry.$error.required && checkoutForm.expiry.$dirty">Required</span>
-								<span class="help-block" ng-show="checkoutForm.expiry.$error.expiry">Expiration date is invalid.</span>
+							<label for="jobDescription" class="col-sm-2 control-label">Twitter</label>
+							<div class="col-sm-8">
+								<input type="text" class="form-control input-lg" name="jobDescription" ng-model="formData.twitter"  >
 							</div>
 						</div>
 						<div class="form-group">
-							<label class="col-sm-2 control-label">Zip Code</label>
-							<div class="col-sm-6" ng-class="{'has-error': checkoutForm.zipcode.$invalid && checkoutForm.zipcode.$dirty}">
-								<input class="form-control input-lg" ng-model="addressZip" ng-model-options="{ debounce: 250 }" ng-pattern="/^(\d{5}-\d{4}|\d{5})$/" placeholder="Zip Code" name="zipcode" required />
-								<span class="help-block" ng-show="checkoutForm.zipcode.$error.required && checkoutForm.zipcode.$dirty">Required</span>
-								<span class="help-block" ng-show="checkoutForm.zipcode.$error.pattern">Zipcode is invalid.</span>
+							<label for="jobDescription" class="col-sm-2 control-label">LinkedIn</label>
+							<div class="col-sm-8">
+								<input type="text" class="form-control input-lg" name="jobDescription" ng-model="formData.linkedin"  >
 							</div>
 						</div>
 						<div class="form-group">
-							<div class="col-sm-offset-2 col-sm-8">
-								<button type="submit" class="btn btn-primary btn-lg">Post a Job</button>
+							<label for="jobDescription" class="col-sm-2 control-label">Instagram</label>
+							<div class="col-sm-8">
+								<input type="text" class="form-control input-lg" name="jobDescription" ng-model="formData.instagram"  >
 							</div>
+						</div>
+					</div>
+					<div id="job" class="col-sm-6">
+						<div class="form-group">
+							<label for="jobTitle" class="col-sm-2 control-label">Pinterest</label>
+							<div class="col-sm-8">
+								<input type="text" class="form-control input-lg" id="jobTitle" name="jobTitle" ng-model="formData.pinterest" >
+							</div>
+						</div>
+						<div class="form-group">
+							<label for="jobTitle" class="col-sm-2 control-label">Snapchat</label>
+							<div class="col-sm-8">
+								<input type="text" class="form-control input-lg" name="jobDescription" ng-model="formData.snapchat"  >
+							</div>
+						</div>
+						<div class="form-group">
+							<label for="jobDescription" class="col-sm-2 control-label">Whatsapp</label>
+							<div class="col-sm-8">
+								<input type="text" class="form-control input-lg" name="jobDescription" ng-model="formData.whatsapp"  >
+							</div>
+						</div>
+						<div class="form-group">
+							<label for="jobDescription" class="col-sm-2 control-label">Youtube</label>
+							<div class="col-sm-8">
+								<input type="text" class="form-control input-lg" name="jobDescription" ng-model="formData.youtube"  >
+							</div>
+						</div>
+						<div class="form-group">
+							<label for="jobDescription" class="col-sm-2 control-label">Reddit</label>
+							<div class="col-sm-8">
+								<input type="text" class="form-control input-lg" name="jobDescription" ng-model="formData.reddit"  >
+							</div>
+						</div>
+					</div>
+					<div class="form-group text-center">
+						<div class="col-sm-offset-2 col-sm-8">
+							<button type="submit" ng-click="editUser()" class="btn btn-primary btn-lg">Confirm Edit</button>
 						</div>
 					</div>
 				</form>
